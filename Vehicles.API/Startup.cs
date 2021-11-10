@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
 
 namespace Vehicles.API
@@ -27,9 +28,12 @@ namespace Vehicles.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddDbContext<DataContext>(x => {
                 x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddTransient<Data.SeedDb>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
