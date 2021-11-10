@@ -10,18 +10,18 @@ using Vehicles.API.Data.Entities;
 namespace Vehicles.API.Controllers
 {
     //[Authorize(Roles = "Admin")]
-    public class VehicleTypesController : Controller
+    public class DocumentTypesController : Controller
     {
         private readonly DataContext _context;
 
-        public VehicleTypesController(DataContext context)
+        public DocumentTypesController(DataContext context)
         {
             _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.VehicleTypes.ToListAsync());
+            return View(await _context.DocumentTypes.ToListAsync());
         }
 
         public IActionResult Create()
@@ -31,13 +31,13 @@ namespace Vehicles.API.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(VehicleType vehicleType)
+        public async Task<IActionResult> Create(DocumentType documentType)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Add(vehicleType);
+                    _context.Add(documentType);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -58,7 +58,7 @@ namespace Vehicles.API.Controllers
                 }
             }
 
-            return View(vehicleType);
+            return View(documentType);
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -68,20 +68,20 @@ namespace Vehicles.API.Controllers
                 return NotFound();
             }
 
-            VehicleType vehicleType = await _context.VehicleTypes.FindAsync(id);
-            if (vehicleType == null)
+            DocumentType documentType = await _context.DocumentTypes.FindAsync(id);
+            if (documentType == null)
             {
                 return NotFound();
             }
 
-            return View(vehicleType);
+            return View(documentType);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, VehicleType vehicleType)
+        public async Task<IActionResult> Edit(int id, DocumentType documentType)
         {
-            if (id != vehicleType.Id)
+            if (id != documentType.Id)
             {
                 return NotFound();
             }
@@ -90,7 +90,7 @@ namespace Vehicles.API.Controllers
             {
                 try
                 {
-                    _context.Update(vehicleType);
+                    _context.Update(documentType);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -110,7 +110,7 @@ namespace Vehicles.API.Controllers
                     ModelState.AddModelError(string.Empty, exception.Message);
                 }
             }
-            return View(vehicleType);
+            return View(documentType);
         }
 
         public async Task<IActionResult> Delete(int? id)
@@ -120,14 +120,14 @@ namespace Vehicles.API.Controllers
                 return NotFound();
             }
 
-            VehicleType vehicleType = await _context.VehicleTypes
+            DocumentType documentType = await _context.DocumentTypes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (vehicleType == null)
+            if (documentType == null)
             {
                 return NotFound();
             }
 
-            _context.VehicleTypes.Remove(vehicleType);
+            _context.DocumentTypes.Remove(documentType);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
