@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
+using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
 
 namespace Vehicles.API.Controllers

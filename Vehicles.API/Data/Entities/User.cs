@@ -42,10 +42,10 @@ namespace Vehicles.API.Data.Entities
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
                 ? $"https://localhost:44374/images/noimage.png"
-                : $"https://vehicleszulu.blob.core.windows.net/users/{ImageId}";
+                : $"https://vehiclesjeison.blob.core.windows.net/users/{ImageId}";
 
         //: string.IsNullOrEmpty(SocialImageURL)
-        //    ? $"https://vehicleszulu.azurewebsites.net/images/noimage.png"
+        //    ? $"https://vehiclesjeison.azurewebsites.net/images/noimage.png"
         //    : SocialImageURL;
 
         //[Display(Name = "Foto")]
@@ -60,9 +60,11 @@ namespace Vehicles.API.Data.Entities
         [Display(Name = "Usuario")]
         public string FullName => $"{FirstName} {LastName}";
 
-        //public ICollection<Vehicle> Vehicles { get; set; }
+        public ICollection<Vehicle> Vehicles { get; set; }
 
-        //[Display(Name = "# Vehículos")]
-        //public int VehiclesCount => Vehicles == null ? 0 : Vehicles.Count;
+        [Display(Name = "# Vehículos")]
+        public int VehiclesCount => Vehicles == null ? 0 : Vehicles.Count;
+
+
     }
 }
