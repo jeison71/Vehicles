@@ -38,7 +38,6 @@ namespace Vehicles.API.Data.Entities
         [Display(Name = "Foto")]
         public Guid ImageId { get; set; }
 
-        //TODO: Fix the image path
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
                 ? $"https://localhost:44374/images/noimage.png"
