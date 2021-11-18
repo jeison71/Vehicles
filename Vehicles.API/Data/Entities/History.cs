@@ -21,11 +21,11 @@ namespace Vehicles.API.Data.Entities
         public User User { get; set; }
 
         [Display(Name = "Fecha")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm}")]
         public DateTime Date { get; set; }
 
         [Display(Name = "Fecha")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm}")]
         public DateTime DateLocal => Date.ToLocalTime();
 
 
